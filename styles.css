@@ -1,15 +1,18 @@
 :root {
   color-scheme: dark;
-  --bg: #0d1110;
-  --panel: #151b19;
-  --panel-soft: #1c2421;
-  --ink: #f6f0e4;
-  --muted: #b8b1a3;
-  --line: rgba(246, 240, 228, 0.14);
-  --gold: #d6ad61;
-  --green: #79b896;
-  --blue: #7aa7c7;
-  --shadow: 0 24px 80px rgba(0, 0, 0, 0.36);
+  --bg: #050b14;
+  --panel: #0c1724;
+  --panel-soft: #112236;
+  --ink: #fffaf0;
+  --muted: #c4d4df;
+  --line: rgba(255, 250, 240, 0.16);
+  --gold: #f7c948;
+  --coral: #ff8a5b;
+  --cyan: #2dd4bf;
+  --violet: #5eead4;
+  --green: #57cc99;
+  --blue: #38bdf8;
+  --shadow: 0 28px 90px rgba(0, 0, 0, 0.42);
 }
 
 * {
@@ -20,8 +23,10 @@ body {
   margin: 0;
   min-height: 100vh;
   background:
-    radial-gradient(circle at top left, rgba(121, 184, 150, 0.18), transparent 34rem),
-    linear-gradient(135deg, rgba(214, 173, 97, 0.08), transparent 42%),
+    radial-gradient(circle at 12% 8%, rgba(56, 189, 248, 0.28), transparent 28rem),
+    radial-gradient(circle at 88% 16%, rgba(45, 212, 191, 0.2), transparent 26rem),
+    radial-gradient(circle at 50% 92%, rgba(247, 201, 72, 0.14), transparent 34rem),
+    linear-gradient(135deg, rgba(87, 204, 153, 0.12), transparent 42%),
     var(--bg);
   color: var(--ink);
   font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
@@ -34,8 +39,8 @@ body::before {
   pointer-events: none;
   opacity: 0.13;
   background-image:
-    linear-gradient(rgba(246, 240, 228, 0.16) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(246, 240, 228, 0.13) 1px, transparent 1px);
+    linear-gradient(rgba(45, 212, 191, 0.22) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(56, 189, 248, 0.16) 1px, transparent 1px);
   background-size: 42px 42px;
   mask-image: linear-gradient(to bottom, black, transparent 72%);
 }
@@ -61,6 +66,17 @@ main {
   z-index: 2;
 }
 
+.site-header::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 10px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--blue), var(--cyan), var(--gold), transparent);
+  opacity: 0.72;
+}
+
 .brand {
   display: inline-flex;
   align-items: center;
@@ -73,10 +89,11 @@ main {
   place-items: center;
   width: 48px;
   height: 48px;
-  border: 1px solid rgba(214, 173, 97, 0.46);
-  background: linear-gradient(145deg, rgba(214, 173, 97, 0.22), rgba(121, 184, 150, 0.12));
-  color: var(--gold);
+  border: 1px solid rgba(255, 209, 102, 0.62);
+  background: linear-gradient(145deg, rgba(247, 201, 72, 0.34), rgba(45, 212, 191, 0.3), rgba(56, 189, 248, 0.2));
+  color: var(--ink);
   font-weight: 800;
+  box-shadow: 0 0 28px rgba(255, 209, 102, 0.22);
 }
 
 .brand strong,
@@ -94,8 +111,8 @@ main {
   align-items: center;
   gap: 8px;
   padding: 6px;
-  border: 1px solid var(--line);
-  background: rgba(13, 17, 16, 0.72);
+  border: 1px solid rgba(45, 212, 191, 0.28);
+  background: rgba(7, 9, 17, 0.72);
   backdrop-filter: blur(18px);
 }
 
@@ -109,7 +126,7 @@ main {
 
 .main-nav a:hover,
 .main-nav a.active {
-  background: rgba(214, 173, 97, 0.16);
+  background: linear-gradient(135deg, rgba(247, 201, 72, 0.2), rgba(45, 212, 191, 0.18));
   color: var(--ink);
 }
 
@@ -134,9 +151,13 @@ main {
   letter-spacing: 0;
 }
 
+.hero-copy h1 {
+  text-shadow: 0 0 42px rgba(56, 189, 248, 0.2);
+}
+
 .eyebrow,
 .card-label {
-  color: var(--gold);
+  color: var(--cyan);
   font-size: 0.78rem;
   font-weight: 800;
   letter-spacing: 0.12em;
@@ -186,13 +207,70 @@ main {
 .details-grid article,
 .contact-card,
 .contact-form {
-  border: 1px solid var(--line);
-  background: linear-gradient(180deg, rgba(28, 36, 33, 0.94), rgba(21, 27, 25, 0.94));
+  border: 1px solid rgba(255, 250, 240, 0.15);
+  background:
+    linear-gradient(145deg, rgba(247, 201, 72, 0.08), transparent 34%),
+    linear-gradient(315deg, rgba(45, 212, 191, 0.13), transparent 38%),
+    linear-gradient(180deg, rgba(17, 34, 54, 0.97), rgba(12, 23, 36, 0.97));
   box-shadow: var(--shadow);
+}
+
+.feature-card,
+.details-grid article,
+.contact-card,
+.contact-form,
+.skill-panel,
+.hero-panel {
+  position: relative;
+  overflow: hidden;
+}
+
+.feature-card::before,
+.details-grid article::before,
+.contact-card::before,
+.contact-form::before,
+.skill-panel::before,
+.hero-panel::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto;
+  height: 3px;
+  background: linear-gradient(90deg, var(--gold), var(--green), var(--cyan), var(--blue));
 }
 
 .hero-panel {
   padding: 28px;
+}
+
+.profile-frame {
+  margin: 0;
+  border: 1px solid rgba(45, 212, 191, 0.38);
+  background:
+    linear-gradient(145deg, rgba(247, 201, 72, 0.16), rgba(45, 212, 191, 0.12)),
+    var(--panel-soft);
+  box-shadow: 0 22px 70px rgba(0, 0, 0, 0.34), 0 0 42px rgba(56, 189, 248, 0.14);
+  overflow: hidden;
+}
+
+.profile-frame img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+}
+
+.hero-photo {
+  width: min(260px, 100%);
+  aspect-ratio: 1;
+  margin: 0 auto 22px;
+}
+
+.about-photo {
+  float: right;
+  width: min(250px, 42%);
+  aspect-ratio: 1;
+  margin: 0 0 22px 28px;
 }
 
 .circuit-art {
@@ -200,19 +278,22 @@ main {
   height: 230px;
   margin-bottom: 26px;
   overflow: hidden;
-  border: 1px solid rgba(214, 173, 97, 0.22);
+  border: 1px solid rgba(45, 212, 191, 0.36);
   background:
-    radial-gradient(circle at 26% 34%, rgba(214, 173, 97, 0.42) 0 5px, transparent 6px),
-    radial-gradient(circle at 62% 58%, rgba(121, 184, 150, 0.42) 0 5px, transparent 6px),
-    linear-gradient(90deg, transparent 14%, rgba(214, 173, 97, 0.48) 14% 15%, transparent 15%),
-    linear-gradient(0deg, transparent 44%, rgba(121, 184, 150, 0.42) 44% 45%, transparent 45%),
-    linear-gradient(135deg, rgba(122, 167, 199, 0.2), rgba(214, 173, 97, 0.08));
+    radial-gradient(circle at 26% 34%, rgba(247, 201, 72, 0.82) 0 5px, transparent 6px),
+    radial-gradient(circle at 62% 58%, rgba(45, 212, 191, 0.78) 0 5px, transparent 6px),
+    radial-gradient(circle at 78% 28%, rgba(56, 189, 248, 0.78) 0 4px, transparent 5px),
+    linear-gradient(90deg, transparent 14%, rgba(247, 201, 72, 0.58) 14% 15%, transparent 15%),
+    linear-gradient(0deg, transparent 44%, rgba(45, 212, 191, 0.56) 44% 45%, transparent 45%),
+    linear-gradient(135deg, rgba(56, 189, 248, 0.3), rgba(45, 212, 191, 0.2), rgba(247, 201, 72, 0.12));
+  box-shadow: inset 0 0 50px rgba(56, 189, 248, 0.17);
 }
 
 .circuit-art span {
   position: absolute;
-  border: 1px solid rgba(246, 240, 228, 0.18);
-  background: rgba(13, 17, 16, 0.44);
+  border: 1px solid rgba(255, 250, 240, 0.2);
+  background: rgba(7, 9, 17, 0.46);
+  box-shadow: 0 0 30px rgba(45, 212, 191, 0.18);
 }
 
 .circuit-art span:nth-child(1) {
@@ -251,7 +332,10 @@ main {
 }
 
 .metric strong {
-  color: var(--green);
+  background: linear-gradient(90deg, var(--green), var(--cyan), var(--gold));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
   font-size: 1.55rem;
 }
 
@@ -305,9 +389,11 @@ h3 {
   align-items: start;
   padding: 42px;
   margin-bottom: 72px;
-  border-top: 1px solid rgba(214, 173, 97, 0.34);
-  border-bottom: 1px solid rgba(214, 173, 97, 0.34);
-  background: rgba(13, 17, 16, 0.48);
+  border-top: 1px solid rgba(247, 201, 72, 0.42);
+  border-bottom: 1px solid rgba(45, 212, 191, 0.42);
+  background:
+    linear-gradient(90deg, rgba(247, 201, 72, 0.1), rgba(45, 212, 191, 0.1), rgba(56, 189, 248, 0.08)),
+    rgba(5, 11, 20, 0.62);
 }
 
 .timeline-band h2 {
@@ -323,9 +409,9 @@ h3 {
 }
 
 .project-list span {
-  border: 1px solid var(--line);
-  background: rgba(246, 240, 228, 0.05);
-  color: var(--muted);
+  border: 1px solid rgba(45, 212, 191, 0.26);
+  background: rgba(255, 250, 240, 0.07);
+  color: var(--ink);
   padding: 12px 14px;
 }
 
@@ -357,7 +443,7 @@ h3 {
 }
 
 .experience-item span {
-  color: var(--green);
+  color: var(--cyan);
   font-weight: 800;
   font-size: 0.86rem;
 }
@@ -430,7 +516,7 @@ h3 {
 .contact-form textarea {
   width: 100%;
   border: 1px solid var(--line);
-  background: rgba(13, 17, 16, 0.86);
+  background: rgba(5, 11, 20, 0.88);
   color: var(--ink);
   padding: 14px 15px;
   font: inherit;
@@ -495,6 +581,12 @@ h3 {
 
   .skill-panel {
     position: static;
+  }
+
+  .about-photo {
+    float: none;
+    width: min(260px, 100%);
+    margin: 0 0 28px;
   }
 }
 
