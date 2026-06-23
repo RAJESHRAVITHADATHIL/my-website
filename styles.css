@@ -269,10 +269,11 @@ main {
 }
 
 .hero-photo {
-  width: min(245px, 100%);
-  aspect-ratio: 1;
-  margin: 0 auto 22px;
+    width: 150px;
+    height: 150px;
+    margin: 0 auto 15px;
 }
+
 
 .profile-title {
   margin: -4px 0 16px;
